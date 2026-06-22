@@ -4,10 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-番茄钟 (Pomodoro Timer) — 两个独立实现：
-
-1. **Python Tkinter 版** (`pomodoro.py`) — 轻量桌面应用，用 `pythonw` 静默启动
-2. **Tauri + React 版** (`pomodoro-app/`) — 现代桌面应用
+番茄钟 (Pomodoro Timer) — Tauri + React 桌面应用。
 
 ---
 
@@ -59,13 +56,14 @@ cd pomodoro-app && pnpm lint
 - **主题**: 亮/暗模式切换，`localStorage` 持久化，跟随系统偏好作为默认
 - **数据持久化**: 全部 `localStorage`（`pomodoro-config`、`pomodoro-daily`、`pomodoro-theme`），无后端数据库
 - **窗口置顶**: 通过 `getCurrentWindow().setAlwaysOnTop()` 实现，设置弹窗中切换
+- **配置单位**: 分钟制
 
 ### TypeScript 代码组织约定
 
 `App.tsx` 遵循自上而下结构：
 
 1. **类型定义** → `TimerState`、`Config` interface
-2. **默认值** → `DEFAULT_CONFIG`（分钟制，与 Python 版的秒制不同）
+2. **默认值** → `DEFAULT_CONFIG`
 3. **工具函数** → `formatTime()`、`totalSeconds()`
 4. **模块级常量** → 不可变引用，避免每次渲染重建：
    - `CIRCUMFERENCE` — 圆形进度环周长
@@ -96,36 +94,9 @@ cd pomodoro-app && pnpm lint
 
 ---
 
-## Python 版 (pomodoro.py)
-
-- 纯 Python 3，依赖仅 `tkinter`（内置）+ `winsound`（Windows 提示音）
-- 配置存储: `pomodoro_config.json`（秒制：`work_time`、`short_break`、`long_break`）
-- 每日数据: `pomodoro_data.json`
-- **静默启动**: `pythonw pomodoro.py`（无控制台窗口）
-- 注意：Python 版 config 用**秒**，Tauri 版用**分钟**，修改默认值时两边要保持语义一致
-
-### 启动方式
-- 双击桌面「番茄钟」快捷方式（指向 `pythonw.exe` + `tomato.ico` 图标）
-- 双击 `启动番茄钟.bat`
-- 双击 `启动番茄钟.vbs`（VBS 静默启动器）
-- 命令行: `pythonw pomodoro.py`
-
----
-
-## 桌面快捷方式相关文件
-
-| 文件 | 用途 |
-|---|---|
-| `启动番茄钟.bat` | BAT 封装，`pythonw` 静默启动 |
-| `启动番茄钟.vbs` | VBS 静默启动器，避免黑窗口 |
-| `tomato.ico` | 🍅 番茄图标（16-256px 多尺寸） |
-
----
-
 ## 图标资源
 
 - **Tauri 应用图标**: `pomodoro-app/src-tauri/icons/`（多格式: png, ico, icns）
-- **番茄图标**: `tomato.ico`（由 Python/Pillow 生成）
 
 ---
 
@@ -133,4 +104,3 @@ cd pomodoro-app && pnpm lint
 
 - Remote: `git@github.com:tinga525/pomodoro-timer.git`
 - SSH key: `~/.ssh/id_ed25519.pub`
-当你要写前端视觉修改的时候，去参考[text](平拍视觉规范)这个文件夹里的内容
