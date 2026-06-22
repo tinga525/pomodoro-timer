@@ -8,13 +8,24 @@ pomodoro_data.json
 pomodoro_soft_config.json
 pomodoro_soft_data.json
 
-# Tauri build artifacts
+# Dependencies
+node_modules/
+
+# Build output
+dist/
 pomodoro-app/src-tauri/target/
-pomodoro-app/node_modules/
-pomodoro-app/dist/
 
 # IDE
 .vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
 
 # Downloaded repos (not part of this project)
 agent-skills/
