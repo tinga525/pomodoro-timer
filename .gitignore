@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+
+# Config/data files (user-specific, not tracked)
+pomodoro_config.json
+pomodoro_data.json
+pomodoro_soft_config.json
+pomodoro_soft_data.json
+
+# Tauri build artifacts
+pomodoro-app/src-tauri/target/
+pomodoro-app/node_modules/
+pomodoro-app/dist/
+
+# IDE
+.vscode/
+
+# Downloaded repos (not part of this project)
+agent-skills/
+vercel-skills/
+_tmp_clone/
+temp_skills_clone/
+opencli-extension/
+opencli-extension-v1.0.2.zip
+
+# Misc
+fuzhou-food-images/
+fuzhou-food-search.png
+修改.docx
+品牌视觉规范/

@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/* ============================
+   Design Tokens — 暖瓷色系
+   参考: 极简奶油白 + 柔和陶土
+   无纯黑纯白，暖调柔和
+   ============================ */
+:root {
+  /* 强调色 */
+  --accent: #cd9583;
+  --accent-break: #8da891;
+  /* 中性色 — 暖瓷白基调 */
+  --bg-primary: #faf7f2;
+  --bg-secondary: #f2ede6;
+  --text-primary: #4a3f3a;
+  --text-secondary: #b8afa5;
+  --frost-border: #e8e0d6;
+  --card-bg: #f5f1ea;
+  --btn-bg: #f0ebe3;
+  --progress-bg: #e8e0d6;
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.03);
+}
+}
+
+.dark {
+  /* 强调色 */
+  --accent: #d9a18e;
+  --accent-break: #8dab93;
+  /* 中性色 — 暖深灰 */
+  --bg-primary: #1f1d1a;
+  --bg-secondary: #282620;
+  --text-primary: #ebe7e0;
+  --text-secondary: #9d968b;
+  --frost-border: #38342e;
+  --card-bg: #282620;
+  --btn-bg: #322e29;
+  --progress-bg: #38342e;
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.10);
+}
+}
+
+/* ============================
+   Base
+   ============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, #root, .frost, .frost-card, .titlebar, button {
+  user-select: none;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+    'Helvetica Neue', 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================
+   Surfaces
+   ============================ */
+.frost {
+  background: var(--bg-primary);
+  transition: background 0.3s ease;
+}
+
+.frost-card {
+  background: var(--card-bg);
+  border: 1px solid var(--frost-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ============================
+   Titlebar (拖拽区域)
+   ============================ */
+.titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-app-region: drag;
+  z-index: 50;
+}
+
+.titlebar-button {
+  -webkit-app-region: no-drag;
+}
+
+/* ============================
+   Circular Progress
+   ============================ */
+.progress-ring {
+  transition: stroke-dashoffset 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ============================
+   Buttons
+   ============================ */
+.btn-press {
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1),
+              background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-press:hover {
+  transform: scale(1.04);
+}
+
+.btn-press:active {
+  transform: scale(0.96);
+}
+
+/* ============================
+   Animations
+   ============================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
